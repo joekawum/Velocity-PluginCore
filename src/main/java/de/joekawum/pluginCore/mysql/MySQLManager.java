@@ -92,7 +92,7 @@ public class MySQLManager {
     }
 
     public boolean deleteTable(String tableName) throws SQLException {
-        PreparedStatement ps = this.mySQL.getStatement("DELETE * FROM " + tableName + ";");
+        PreparedStatement ps = this.mySQL.getStatement("DELETE FROM " + tableName + ";");
         ps.executeUpdate();
         ps.close();
         return true;
