@@ -91,6 +91,13 @@ public class MySQLManager {
         return true;
     }
 
+    public boolean deleteTable(String tableName) throws SQLException {
+        PreparedStatement ps = this.mySQL.getStatement("DELETE * FROM " + tableName + ";");
+        ps.executeUpdate();
+        ps.close();
+        return true;
+    }
+
     public int getTableSize(String tableName) throws SQLException {
         ResultSet rs = this.mySQL.query("SELECT * FROM " + tableName);
         int count = 0;
