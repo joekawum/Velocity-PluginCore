@@ -110,4 +110,17 @@ public class MySQLManager {
         }
         return list;
     }
+
+    public List<Object[]> getTable(String tableName, String[] objects) throws SQLException {
+        ResultSet rs = this.mySQL.query("SELECT * FROM " + tableName);
+        List<Object[]> list = new ArrayList<>();
+        while (rs != null && rs.next()) {
+            Object[] obj = new Object[objects.length];
+            for (int i = 0; i < objects.length; i++) {
+                obj[i] = rs.getObject(objects[i]);
+            }
+            list.add(obj);
+        }
+        return list;
+    }
 }
